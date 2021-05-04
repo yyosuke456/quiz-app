@@ -20,4 +20,9 @@ public class Quiz {
     public boolean getAnswer() {
         return answer;
     }
+
+    public String toString() {
+        String marubatsu = answer ? "○" : "✕";
+        return question + " " + marubatsu;
+    }
 }
