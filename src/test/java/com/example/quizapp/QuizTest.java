@@ -1,9 +1,18 @@
 package com.example.quizapp;
 
-public class QuizTest {
-    public void toStringWhenMaru(){
-        Quiz quiz = new Quiz( question: "問題文", answer: true);
-        assertThat(quiz.toString(), is("問題文○"));
-    }
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+class QuizTest {
+    @Test
+    public void toStringマルのとき() {
+        Quiz quiz = new Quiz("問題文", true);
+        assertEquals(quiz.toString(), "問題文 ○");
+    }
+    @Test
+    public void toStringバツのとき() {
+        Quiz quiz = new Quiz("問題文", false);
+        assertEquals(quiz.toString(), "問題文 ✕");
+    }
 }
