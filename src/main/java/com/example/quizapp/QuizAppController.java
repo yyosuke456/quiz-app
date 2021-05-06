@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class QuizAppController {
     private List<Quiz> quizzes = new ArrayList<>();
+    private QuizFileDao quizFileDao = new QuizFileDao();
 
     @GetMapping("/show")
     public List<Quiz> show() {
@@ -42,5 +44,16 @@ public class QuizAppController {
         }
         // 見つからなかったら「問題がありません」
         return "問題がありません";
+    }
+
+    @PostMapping("/save")
+    public String save() {
+        try {
+            quizFileDao.write(quizzes);
+            return "ファイルに保存しました";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "ファイルの保存に失敗しました";
+        }
     }
 }
