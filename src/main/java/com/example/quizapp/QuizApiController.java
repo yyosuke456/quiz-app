@@ -1,19 +1,17 @@
 package com.example.quizapp;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Controller
-@RequestMapping("page")
-public class QuizAppController {
+@RestController
+public class QuizApiController {
     private List<Quiz> quizzes = new ArrayList<>();
     private QuizFileDao quizFileDao = new QuizFileDao();
 
@@ -23,8 +21,8 @@ public class QuizAppController {
         return quizzes.get(index);
     }
     @GetMapping("/show")
-    public String show() {
-        return "list";
+    public List<Quiz> show() {
+        return quizzes;
     }
 
     @PostMapping("/create")
