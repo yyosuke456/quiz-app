@@ -1,6 +1,7 @@
 package com.example.quizapp;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,8 @@ public class QuizAppController {
         return quizzes.get(index);
     }
     @GetMapping("/show")
-    public String show() {
+    public String show(Model model) {
+        model.addAttribute("quizzes", quizzes);
         return "list";
     }
 

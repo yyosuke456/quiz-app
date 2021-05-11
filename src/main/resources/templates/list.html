@@ -66,13 +66,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>問題文１</td>
-            <td>◯</td>
-        </tr>
-        <tr>
-            <td>問題文２</td>
-            <td>×</td>
+        <tr th:each="quiz: ${quizzes}">
+            <td th:text="${quiz.question}"></td>
+            <td th:text="${quiz.answer} ? '○' : '✕'"></td>
         </tr>
         </tbody>
     </table>
