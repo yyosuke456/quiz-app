@@ -62,10 +62,10 @@ public class QuizAppController {
     public String save(RedirectAttributes attributes) {
         try {
             quizFileDao.write(quizzes);
-            attributes.addAttribute( "successMessage", "ファイルに保存しました");
+            attributes.addFlashAttribute( "successMessage", "ファイルに保存しました");
         } catch (IOException e) {
             e.printStackTrace();
-            attributes.addAttribute("errorMessage", "ファイルの保存に失敗しました");
+            attributes.addFlashAttribute("errorMessage", "ファイルの保存に失敗しました");
         }
         return "redirect:/page/show";
     }
@@ -74,10 +74,10 @@ public class QuizAppController {
     public String load(RedirectAttributes attributes) {
         try {
             quizzes = quizFileDao.read();
-            attributes.addAttribute( "successMessage",  "ファイルを読み込みました。");
+            attributes.addFlashAttribute( "successMessage",  "ファイルを読み込みました。");
         } catch (IOException e){
             e.printStackTrace();
-            attributes.addAttribute("errorMessage", "ファイルの読み込みにｎ失敗しました");
+            attributes.addFlashAttribute("errorMessage", "ファイルの読み込みにｎ失敗しました");
         }
         return "redirect:/page/show";
     }
