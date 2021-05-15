@@ -20,9 +20,11 @@ public class QuizAppController {
     private QuizFileDao quizFileDao = new QuizFileDao();
 
     @GetMapping("quiz")
-    public Quiz quiz() {
+    public String quiz(Model model) {
         int index = new Random().nextInt(quizzes.size());
-        return quizzes.get(index);
+
+        model.addAttribute("quiz", quizzes.get(index));
+        return "quiz";
     }
     @GetMapping("/show")
     public String show(Model model) {

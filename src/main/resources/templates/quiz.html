@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-    <p>問題文１</p>
+    <p th:text="${quiz.question}"></p>
     <form method="GET">
         <input type="hidden" name="question" value="問題文１">
         <button class="btn btn-success" name="answer" value="true">◯</button>
